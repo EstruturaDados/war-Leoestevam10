@@ -1,0 +1,89 @@
+#include <stdio.h>
+#include <string.h>
+
+// Definindo a estrutura do tipo Territorio
+typedef struct {
+    char nome[30];     // Nome do território
+    char cor[10];      // Cor do exército
+    int tropas;        // Quantidade de tropas
+} Territorio;
+
+int main() {
+    // Declaração de um vetor com 5 territórios
+    Territorio territorios[5];
+
+    // Cadastro do território 1
+    printf("Cadastro do território 1:\n");
+    printf("Digite o nome do território: ");
+    scanf(" %[^\n]", territorios[0].nome);
+    printf("Digite a cor do exército: ");
+    scanf(" %[^\n]", territorios[0].cor);
+    printf("Digite a quantidade de tropas: ");
+    scanf("%d", &territorios[0].tropas);
+
+    // Cadastro do território 2
+    printf("\nCadastro do território 2:\n");
+    printf("Digite o nome do território: ");
+    scanf(" %[^\n]", territorios[1].nome);
+    printf("Digite a cor do exército: ");
+    scanf(" %[^\n]", territorios[1].cor);
+    printf("Digite a quantidade de tropas: ");
+    scanf("%d", &territorios[1].tropas);
+
+    // Cadastro do território 3
+    printf("\nCadastro do território 3:\n");
+    printf("Digite o nome do território: ");
+    scanf(" %[^\n]", territorios[2].nome);
+    printf("Digite a cor do exército: ");
+    scanf(" %[^\n]", territorios[2].cor);
+    printf("Digite a quantidade de tropas: ");
+    scanf("%d", &territorios[2].tropas);
+
+    // Cadastro do território 4
+    printf("\nCadastro do território 4:\n");
+    printf("Digite o nome do território: ");
+    scanf(" %[^\n]", territorios[3].nome);
+    printf("Digite a cor do exército: ");
+    scanf(" %[^\n]", territorios[3].cor);
+    printf("Digite a quantidade de tropas: ");
+    scanf("%d", &territorios[3].tropas);
+
+    // Cadastro do território 5
+    printf("\nCadastro do território 5:\n");
+    printf("Digite o nome do território: ");
+    scanf(" %[^\n]", territorios[4].nome);
+    printf("Digite a cor do exército: ");
+    scanf(" %[^\n]", territorios[4].cor);
+    printf("Digite a quantidade de tropas: ");
+    scanf("%d", &territorios[4].tropas);
+
+    // Exibição dos dados cadastrados
+    printf("\n=== Dados dos Territórios Cadastrados ===\n");
+
+    printf("\nTerritório 1:\n");
+    printf("Nome: %s\n", territorios[0].nome);
+    printf("Cor do Exército: %s\n", territorios[0].cor);
+    printf("Quantidade de Tropas: %d\n", territorios[0].tropas);
+
+    printf("\nTerritório 2:\n");
+    printf("Nome: %s\n", territorios[1].nome);
+    printf("Cor do Exército: %s\n", territorios[1].cor);
+    printf("Quantidade de Tropas: %d\n", territorios[1].tropas);
+
+    printf("\nTerritório 3:\n");
+    printf("Nome: %s\n", territorios[2].nome);
+    printf("Cor do Exército: %s\n", territorios[2].cor);
+    printf("Quantidade de Tropas: %d\n", territorios[2].tropas);
+
+    printf("\nTerritório 4:\n");
+    printf("Nome: %s\n", territorios[3].nome);
+    printf("Cor do Exército: %s\n", territorios[3].cor);
+    printf("Quantidade de Tropas: %d\n", territorios[3].tropas);
+
+    printf("\nTerritório 5:\n");
+    printf("Nome: %s\n", territorios[4].nome);
+    printf("Cor do Exército: %s\n", territorios[4].cor);
+    printf("Quantidade de Tropas: %d\n", territorios[4].tropas);
+
+    return 0;
+}
