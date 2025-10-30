@@ -1,0 +1,88 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+typedef struct {
+    char nome[30];
+    char cor[20];
+    int tropas;
+} Territorio;
+
+void exibirMapa(Territorio *mapa, int n) {
+    printf("\n== Territórios ==\n");
+    for (int i = 0; i < n; i++) {
+        printf("\nTerritório %d:\n", i + 1);
+        printf("Nome: %s\n", mapa[i].nome);
+        printf("Cor do Exército: %s\n", mapa[i].cor);
+        printf("Tropas: %d\n", mapa[i].tropas);
+    }
+}
+
+void atacar(Territorio *atacante, Territorio *defensor) {
+    printf("\n%s (%s) está atacando %s (%s)!\n",
+           atacante->nome, atacante->cor,
+           defensor->nome, defensor->cor);
+
+    if (atacante->tropas > defensor->tropas) {
+        printf("%s venceu a batalha!\n", atacante->nome);
+        defensor->tropas = 0;
+    } else if (atacante->tropas < defensor->tropas) {
+        printf("%s perdeu a batalha!\n", atacante->nome);
+        atacante->tropas = 0;
+    } else {
+        printf("Empate! Ambos perdem 1 tropa.\n");
+        atacante->tropas--;
+        defensor->tropas--;
+    }
+}
+
+int main() {
+    srand(time(NULL));
+
+    int n;
+    printf("Digite o número de territórios: ");
+    scanf("%d", &n);
+
+    Territorio *mapa = (Territorio *) calloc(n, sizeof(Territorio));
+
+    printf("\n===== WAR ESTRUTURADO - CADASTRO INICIAL =====\n");
+
+    for (int i = 0; i < n; i++) {
+        printf("\nCadastro do território %d:\n", i + 1);
+        printf("Digite o nome do território: ");
+        scanf(" %[^\n]", mapa[i].nome);
+        printf("Digite a cor do exército: ");
+        scanf(" %[^\n]", mapa[i].cor);
+        printf("Digite a quantidade de tropas: ");
+        scanf("%d", &mapa[i].tropas);
+    }
+
+    int atacante, defensor;
+    char continuar = 's';
+
+    while (continuar == 's' || continuar == 'S') {
+        exibirMapa(mapa, n);
+
+        printf("\nEscolha o território atacante (1 a %d): ", n);
+        scanf("%d", &atacante);
+        printf("Escolha o território defensor (1 a %d): ", n);
+        scanf("%d", &defensor);
+
+        if (atacante < 1 || atacante > n || defensor < 1 || defensor > n) {
+            printf("Opção inválida!\n");
+        } else if (atacante == defensor) {
+            printf("Um território não pode atacar a si mesmo!\n");
+        } else {
+            atacar(&mapa[atacante - 1], &mapa[defensor - 1]);
+        }
+
+        printf("\nDeseja continuar o jogo? (s/n): ");
+        scanf(" %c", &continuar);
+    }
+
+    printf("\nJogo encerrado. Obrigado por jogar!\n");
+
+    free(mapa);
+    return 0;
+}
